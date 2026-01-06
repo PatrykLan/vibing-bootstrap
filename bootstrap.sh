@@ -61,6 +61,7 @@ else
 fi
 
 gh auth setup-git
+git config --global credential.helper '!gh auth git-credential'
 echo -e "${GREEN}✓${NC} Git configured to use GitHub CLI for auth"
 
 section "3. Cloning setup repo"
@@ -68,8 +69,9 @@ section "3. Cloning setup repo"
 mkdir -p "$(dirname "$SETUP_DIR")"
 
 if [ -d "$SETUP_DIR/.git" ]; then
-    echo "Setup directory exists, pulling latest..."
+    echo "Setup directory exists, updating remote and pulling..."
     cd "$SETUP_DIR"
+    git remote set-url origin "https://github.com/$GITHUB_USERNAME/$SETUP_REPO.git"
     git pull
 else
     gh repo clone "$GITHUB_USERNAME/$SETUP_REPO" "$SETUP_DIR"
