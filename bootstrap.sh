@@ -46,7 +46,16 @@ section "2. GitHub Authentication"
 if ! gh auth status &> /dev/null; then
     echo "Please authenticate with GitHub:"
     echo ""
-    gh auth login
+    echo -e "${YELLOW}NOTE: If this fails, run manually after script:${NC}"
+    echo "  gh auth login"
+    echo ""
+    gh auth login </dev/tty || {
+        echo ""
+        echo -e "${RED}GitHub auth failed. Run manually:${NC}"
+        echo "  gh auth login"
+        echo "  Then re-run: $SETUP_DIR/scripts/setup-all.sh --yes"
+        exit 1
+    }
 else
     echo -e "${GREEN}✓${NC} Already authenticated with GitHub"
 fi
@@ -68,7 +77,7 @@ echo -e "${GREEN}✓${NC} Setup repo cloned to $SETUP_DIR"
 section "4. Running full setup"
 
 cd "$SETUP_DIR"
-./scripts/setup-all.sh
+./scripts/setup-all.sh --yes
 
 section "5. Post-install authentication"
 

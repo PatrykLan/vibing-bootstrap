@@ -5,7 +5,7 @@ Public bootstrap script for fresh Ubuntu machines. Installs prerequisites, authe
 ## One Command Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/vibing-bootstrap/main/bootstrap.sh | bash
+curl -fsSL https://raw.githubusercontent.com/PatrykLan/vibing-bootstrap/main/bootstrap.sh | bash
 ```
 
 ## What It Does
@@ -13,29 +13,22 @@ curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/vibing-bootstrap/main
 1. Installs git and GitHub CLI
 2. Prompts you to authenticate with GitHub
 3. Clones your private `setup` repo
-4. Runs the full setup
+4. Runs the full setup (install.sh + terminal.sh + server.sh)
 
 ## Files
 
 - `bootstrap.sh` - The main script
 
-## Setup
+## First Time Setup (for repo owner)
 
-1. Create this repo (public):
-
-   ```bash
-   gh repo create vibing-bootstrap --public
-   ```
-
-2. Update `bootstrap.sh` with your GitHub username
-
-3. Push:
+1. Clone this repo and update username in bootstrap.sh
+2. Push to GitHub:
 
    ```bash
-   git add -A && git commit -m "init" && git push
+   gh repo create vibing-bootstrap --public --source=. --push
    ```
 
-4. Make sure your private `setup` repo exists:
+3. Make sure your private `setup` repo exists:
    ```bash
    cd ~/Coding/setup
    gh repo create setup --private --source=. --push
@@ -46,7 +39,7 @@ curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/vibing-bootstrap/main
 On any fresh Ubuntu machine:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/vibing-bootstrap/main/bootstrap.sh | bash
+curl -fsSL https://raw.githubusercontent.com/PatrykLan/vibing-bootstrap/main/bootstrap.sh | bash
 ```
 
 Then follow the prompts.
