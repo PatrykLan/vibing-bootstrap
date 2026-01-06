@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GITHUB_USERNAME="${GITHUB_USERNAME:-YOUR_USERNAME}"
+GITHUB_USERNAME="${GITHUB_USERNAME:-PatrykLan}"
 SETUP_REPO="setup"
 SETUP_DIR="$HOME/Coding/setup"
 
