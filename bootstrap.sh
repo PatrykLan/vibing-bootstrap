@@ -60,11 +60,14 @@ else
     echo -e "${GREEN}✓${NC} Already authenticated with GitHub"
 fi
 
+gh auth setup-git
+echo -e "${GREEN}✓${NC} Git configured to use GitHub CLI for auth"
+
 section "3. Cloning setup repo"
 
 mkdir -p "$(dirname "$SETUP_DIR")"
 
-if [ -d "$SETUP_DIR" ]; then
+if [ -d "$SETUP_DIR/.git" ]; then
     echo "Setup directory exists, pulling latest..."
     cd "$SETUP_DIR"
     git pull
